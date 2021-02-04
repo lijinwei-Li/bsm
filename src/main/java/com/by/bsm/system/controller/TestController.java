@@ -23,10 +23,9 @@ public class TestController {
 
     @RequestMapping("/testMeth")
     @ResponseBody
-    public String testMeth(){
+    public List<Map<Object,Object>> testMeth(){
         List<Map<Object,Object>> list = testService.testMeth();
-
-        return "111111111111111111111111111111";
+        return list;
     }
 }
 
