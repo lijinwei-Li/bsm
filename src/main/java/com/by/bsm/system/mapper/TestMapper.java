@@ -1,0 +1,9 @@
+package com.by.bsm.system.mapper;
+
+import java.util.List;
+import java.util.Map;
+
+public interface TestMapper {
+
+    List<Map<Object, Object>> testMeth();
+}
