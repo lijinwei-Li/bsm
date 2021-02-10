@@ -18,12 +18,12 @@ import java.util.Map;
 @Slf4j
 public class LoginController {
     @RequestMapping("/")
-    public String jumpLoginPage(){
+    public String loginPage(){
         return "login";
     }
-    @PostMapping("/get")
+    @PostMapping("/login/loginByNameAndPwd")
     @ResponseBody
-    public Object get(String userName,String pwd){
+    public Object loginByNameAndPwd(String userName,String pwd){
         log.info("userName:{}-pwd:{}",userName,pwd);
         Map<Object, Object> map = new HashMap<>();
         map.put("code","200");
