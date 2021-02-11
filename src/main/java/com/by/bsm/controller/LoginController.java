@@ -21,6 +21,7 @@ public class LoginController {
     public String loginPage(){
         return "login";
     }
+
     @PostMapping("/login/loginByNameAndPwd")
     @ResponseBody
     public Object loginByNameAndPwd(String userName,String pwd){
