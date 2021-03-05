@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.by.bsm.system.mapper")
+@MapperScan({"com.by.bsm.system.mapper","com.by.bsm.mapper.system"})
 public class BsmApplication {
 
     public static void main(String[] args) {

@@ -2,13 +2,17 @@ package com.by.bsm.entity.system;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * 用户信息实体类
  * @author:Lijw
  * @createTime: 2021-02-26 17:07
  */
 @Data
-public class User {
+public class User implements Serializable {
+
+    private static final long serialVersionUID = -5767314153905762073L;
     /**
      *用户id
      */
@@ -16,7 +20,7 @@ public class User {
     /**
      * 姓名
      */
-    private String name;
+    private String userName;
     /**
      * 密码
      */

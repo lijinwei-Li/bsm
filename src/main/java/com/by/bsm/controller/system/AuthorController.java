@@ -29,15 +29,20 @@ public class AuthorController {
     @ResponseBody
     public Object login(String userName,String pwd){
         log.info("userName:{}-pwd:{}",userName,pwd);
-        //判断是否已注册
-        User user = AuthorService.getUser(userName,pwd);
-        if(user == null){
-            //注册
-        }
-
         Map<Object, Object> map = new HashMap<>();
-        map.put("code","200");
-        map.put("url","index.html");
+
+        //判断是否已注册，认证用户信息
+        User user = AuthorService.getUser(userName,pwd);
+        log.info("user:{}",user != null ? user.toString() : null);
+        if(user != null){
+            map.put("code","200");
+            map.put("msg","登录成功");
+            map.put("url","./index.html");
+
+        }else{
+            map.put("code","201");
+            map.put("msg","用户名或密码错误");
+        }
         return map;
     }
 

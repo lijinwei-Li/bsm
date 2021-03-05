@@ -18,6 +18,7 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public User getUser(String userName, String pwd) {
-        return null;
+        User user = authorMapper.getUser(userName,pwd);
+        return user;
     }
 }
