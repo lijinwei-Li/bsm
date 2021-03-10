@@ -9,10 +9,9 @@ function login() {
         url: "/author/login" ,//url
         data: $('#loginForm').serialize(),
         success: function (result) {
-            if (result.code == 200) {
+            if (result.status == 200 && result.data.status == 1) {
                 //重定向到首页
-                //window.location.replace(result.url);
-                location.href=result.url;
+                location.href=result.data.url;
             }else{
                 alert(result.msg)
                 return false;

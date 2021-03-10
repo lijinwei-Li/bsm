@@ -1,5 +1,6 @@
 package com.by.bsm.controller.system;
 
+import com.by.bsm.entity.common.ResultObject;
 import com.by.bsm.entity.system.User;
 import com.by.bsm.service.system.AuthorService;
 import lombok.extern.slf4j.Slf4j;
@@ -27,23 +28,22 @@ public class AuthorController {
 
     @PostMapping("/login")
     @ResponseBody
-    public Object login(String userName,String pwd){
+    public ResultObject login(String userName,String pwd){
         log.info("userName:{}-pwd:{}",userName,pwd);
+        //返回对象
+        ResultObject result = new ResultObject();
         Map<Object, Object> map = new HashMap<>();
-
         //判断是否已注册，认证用户信息
         User user = AuthorService.getUser(userName,pwd);
-        log.info("user:{}",user != null ? user.toString() : null);
         if(user != null){
-            map.put("code","200");
-            map.put("msg","登录成功");
             map.put("url","./index.html");
-
+            map.put("status","1");
+            result = result.getSuccess(map,"登录成功");
         }else{
-            map.put("code","201");
-            map.put("msg","用户名或密码错误");
+            map.put("status","0");
+            result = result.getSuccess(map,"用户名或密码错误");
         }
-        return map;
+        return result;
     }
 
 }
