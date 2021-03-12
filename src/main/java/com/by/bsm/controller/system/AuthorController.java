@@ -36,7 +36,6 @@ public class AuthorController {
         //判断是否已注册，认证用户信息
         User user = AuthorService.getUser(userName,pwd);
         if(user != null){
-            map.put("url","./index.html");
             map.put("status","1");
             result = result.getSuccess(map,"登录成功");
         }else{
