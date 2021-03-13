@@ -11,7 +11,7 @@ function login() {
         success: function (result) {
             if (result.status == 200 && result.data.status == 1) {
                 //重定向到首页
-                location.href=result.data.url;
+                location.href="./index.html";
             }else{
                 alert(result.msg)
                 return false;
