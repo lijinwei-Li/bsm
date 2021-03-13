@@ -1,8 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.by.bsm.mapper.system.AuthorMapper" >
+
     <select id="getUser" resultType="com.by.bsm.entity.system.User">
         SELECT * from bsm.bsm_user bu WHERE bu.`user_name` = #{userName} AND bu.`password` = #{pwd}
     </select>
 
+    <select id="getUserByUserName" resultType="com.by.bsm.entity.system.User">
+        SELECT * from bsm.bsm_user bu WHERE bu.`user_name` = #{userName}
+    </select>
+
+    <insert id="newUser">
+        INSERT INTO bsm.bsm_user (
+                                  user_id,
+                                  user_name,
+                                  password,
+                                  creat_time,
+                                  create_user,
+                                  update_time,
+                                  update_user
+                                  )
+                                  VALUES (
+                                  #{userId},
+                                  #{userName},
+                                  #{password},
+                                  now(),
+                                  "黎锦威",
+                                  now(),
+                                  "黎锦威")
+    </insert>
 </mapper>

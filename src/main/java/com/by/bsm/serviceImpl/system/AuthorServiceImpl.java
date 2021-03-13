@@ -21,4 +21,18 @@ public class AuthorServiceImpl implements AuthorService {
         User user = authorMapper.getUser(userName,pwd);
         return user;
     }
+
+    @Override
+    public User getUserByUserName(String userName) {
+         return authorMapper.getUserByUserName(userName);
+    }
+
+    @Override
+    public void newUser(User user) {
+        //生成userId
+        int i = (int) ((Math.random() * 9 + 1) * 100000);
+        String s = String.valueOf(i);
+        user.setUserId(s);
+        int num = authorMapper.newUser(user);
+    }
 }

@@ -14,4 +14,16 @@ public interface AuthorMapper {
      * @return
      */
     User getUser(@Param("userName") String userName, @Param("pwd") String pwd);
+    /**
+     * 根据用户名查询用户信息
+     * @param userName
+     * @return
+     */
+    User getUserByUserName(String userName);
+    /**
+     * 创建新用户
+     * @param user
+     * @return
+     */
+    int newUser(User user);
 }
