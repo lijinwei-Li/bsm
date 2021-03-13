@@ -69,7 +69,7 @@ public class AuthorController {
                 //用户名不能重复
                 User userN = AuthorService.getUserByUserName(userName);
                 if(userN != null){
-                    resultObject = resultObject.getFail(user,"用户名已存在！");
+                    return resultObject = resultObject.getFail(user,"用户名已存在！");
                 }
                 //新建用户
                 AuthorService.newUser(user);
