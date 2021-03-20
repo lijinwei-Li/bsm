@@ -1,5 +1,7 @@
 package com.by.bsm;
 
+import com.alibaba.fastjson.JSON;
+import com.by.bsm.entity.system.User;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
@@ -56,7 +58,34 @@ public class TestRedis {
      */
     @Test
     public void testsetObject(){
-
+        User user = new User();
+        user.setUserId("0001");
+        user.setUserName("黎锦威");
+        user.setAge("16");
+        user.setPhoneNum("13556099173");
+        String s = JSON.toJSONString(user);
+        jedis.set("myUser",s);
+        System.out.println("myUser = " + jedis.get("myUser"));
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
