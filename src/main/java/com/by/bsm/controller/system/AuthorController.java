@@ -10,7 +10,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,12 +20,20 @@ import java.util.Map;
  * @createTime: 2021-02-26 16:41
  */
 @Slf4j
-@RestController
-@RequestMapping("/author")
+@Controller
 public class AuthorController {
 
     @Autowired
     AuthorService AuthorService;
+
+    /**
+     * 默认初始访问登录页面
+     * @return
+     */
+    @RequestMapping("/")
+    public String loginPage(){
+        return "login";
+    }
 
     /**
      * 登录接口
@@ -34,7 +41,8 @@ public class AuthorController {
      * @param password 密码
      * @return
      */
-    @PostMapping("/login")
+    @ResponseBody
+    @PostMapping("/author/login")
     public ResultObject login(String userName,String password){
         log.info("userName:{}-pwd:{}",userName,password);
         //返回对象
@@ -57,7 +65,8 @@ public class AuthorController {
      * @param user
      * @return
      */
-    @PostMapping("/register")
+    @ResponseBody
+    @PostMapping("/author/register")
     public ResultObject register(User user){
         log.info("===User:{}",user);
         ResultObject resultObject = new ResultObject();
@@ -76,12 +85,10 @@ public class AuthorController {
                 resultObject = resultObject.getSuccess(user, "注册成功");
             }else {
                 resultObject = resultObject.getFail(user, "参数为空！");
-
             }
         }
         return resultObject;
     }
-
 }
 
 

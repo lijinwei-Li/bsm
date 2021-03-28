@@ -9,7 +9,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BsmApplication {
 
     public static void main(String[] args) {
-        //dddd
         SpringApplication.run(BsmApplication.class, args);
     }
 
