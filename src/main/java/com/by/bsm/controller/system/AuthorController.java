@@ -48,7 +48,7 @@ public class AuthorController {
         //返回对象
         ResultObject result = new ResultObject();
         Map<Object, Object> map = new HashMap<>();
-        //判断是否已注册，认证用户信息
+        //判断是否已注册，认证用户信息--
         User user = AuthorService.getUser(userName,password);
         if(user != null){
             map.put("status","1");
